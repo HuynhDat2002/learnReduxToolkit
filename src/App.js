@@ -4,14 +4,19 @@ import TodoList from './components/TodoList';
 import Filters from './components/Filters';
 import { useEffect } from 'react';
 import {setupServer} from './fakeApis/index'
-
+  
 const { Title } = Typography;
-
+setupServer();
 function App() {
   useEffect(()=>{
-    fetch('/api/todos')
-    .then((res)=>res.json())
-    .then((res)=>console.log(res));
+    fetch('/api/todos',{
+      method: 'POST',
+      body:JSON.stringify( { id: 1, name: 'Learn Yoga', completed: false, priority: 'Medium' })
+    }).then(res=>{
+      fetch('/api/todos')
+      .then((res)=>res.json())
+      .then((res)=>console.log(res));
+    })
   },[]);
   return (
     <div
