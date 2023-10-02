@@ -8,7 +8,7 @@ const priorityColorMapping = {
   High: 'red',
   Medium: 'blue',
   Low: 'gray',
-};
+}; //fsdlfj
 
 export default function Todo({ name, prioriry, completed, id }) {
   const dispatch = useDispatch();
