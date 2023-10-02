@@ -2,10 +2,17 @@ import { Typography, Divider } from 'antd';
 import './App.css';
 import TodoList from './components/TodoList';
 import Filters from './components/Filters';
+import { useEffect } from 'react';
+import {setupServer} from './fakeApis/index'
 
 const { Title } = Typography;
 
 function App() {
+  useEffect(()=>{
+    fetch('/api/todos')
+    .then((res)=>res.json())
+    .then((res)=>console.log(res));
+  },[]);
   return (
     <div
       style={{
